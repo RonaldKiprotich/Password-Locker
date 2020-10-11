@@ -8,6 +8,15 @@ class User:
 
     def register():
         person1 = User(input("Your Username: "), input("Your Password: "))
+        persons.append("person1")
+        User.login()
+        
+    def login():
+        print("Put in your details to login")
+        username1 = input("Username: ")
+        password1 = input("Password: ")
+
+
 
 
 
