@@ -35,7 +35,7 @@ class Cred():
         self.password = password
 
     def saveCredential():
-        print ("To proceed choose the following. Choose the shortcodes: \n sc- Save Credential\n vc - View Credentials\n dc- Delete Credential ex- exit\n") 
+        print ("To proceed choose the following. Choose the shortcodes: \n sc- Save Credential\n fc - View Credentials\n dc- Display credential dl- delete credential ex- exit\n") 
         option = input().lower()
 
         if option == 'sc':
@@ -54,11 +54,30 @@ class Cred():
             cred_list.append(accountname,username,password)     
      
             
-        elif option == 'vc':
-            print("view existing credentials")
+        elif option == 'fc':
+            print("Account name you will like to find?")
+            accountname = input()
+            for credential in cred_list:
+                if credential.accountname = accountname:
+                    print(credential)
         
         elif option == 'dc':
-            pass  
+            print("display credentials")
+            if (len(cred_list)>0):
+                for credential in cred_list:
+                    accountname = credential.accountname
+                    username = credential.password
+                    password = credential.password
+                    print(f"Account name : {accountname}\n Password: {password}\n Username : {username}")
+
+        elif option == 'dl':
+            print("Enter account name you will like to delete")
+            accountname = input()
+            for credential in cred_list:
+                if credential.accountname = accountname:
+                    cred_list.remove(credential)
+            print("account deleted successfully")        
+
         elif option == 'ex':
             print("Bye")
 
