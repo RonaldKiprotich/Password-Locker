@@ -36,8 +36,15 @@ class Cred():
         self.username = username
         self.password = password
 
+    def passwordGenerate(stringLength=8):
+        """
+        method that generate a random password
+        """
+        password = string.ascii_lowercase + string.ascii_uppercase + "~!@#$%;:^&*"
+        return ''.join(random.choice(password) for i in range(int(stringLength)))    
+
     def saveCredential():
-        print ("To proceed choose the following. Choose the shortcodes: \n sc- Save Credential\n fc - Find Credentials\n dc- Display credential dl- delete credential ex- exit\n") 
+        print ("To proceed choose the following. Choose the shortcodes: \n sc- Save Credential\n fc - Find Credentials\n dc- Display credential\n dl- delete credential\n ex- exit\n") 
         option = input().lower()
 
         if option == 'sc':
@@ -57,8 +64,12 @@ class Cred():
                 # cred_list.append(accountname, username, password)
                 Cred.saveCredential()
             elif passwordChoice == 'sg':
-                print("mayoo")
-                       
+                password = Cred.passwordGenerate()
+                # print(f"Your password is: {password}")
+                # cred1 = Cred(input("Accountname: "), input("Username: "))
+                # cred_list.append(cred1)
+                # print(cred1.accountname, cred1.username, cred1.password)
+                 
         elif option == 'fc':
             print("Account name you will like to find?")
             accountname = input()
@@ -79,6 +90,7 @@ class Cred():
                     username = credential.username
                     password = credential.password
                     print(f"Account name : {accountname}\n Password: {password}\n Username : {username}")
+                    Cred.saveCredential()
 
         elif option == 'dl':
             print("Enter account name you will like to delete")
@@ -86,7 +98,8 @@ class Cred():
             for credential in cred_list:
                 if credential.accountname == accountname:
                     cred_list.remove(credential)
-            print("account deleted successfully")        
+            print("account deleted successfully")  
+            Cred.saveCredential()      
 
         elif option == 'ex':
             print("Bye")
@@ -94,8 +107,6 @@ class Cred():
         else:
             print("Invalid option")    
 
-    def generate_random_password():
-        pass
 
 if __name__ == '__main__':
 
