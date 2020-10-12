@@ -8,6 +8,7 @@ class User:
     def register():
         person1 = User(input("Your Username: "), input("Your Password: "))
         persons.append(person1)
+        print("Credentials created successfully")
         User.login()
 
  
@@ -26,6 +27,7 @@ class User:
         #     print("almost there")
         # else:
         #     print("matata")
+        print("Logged in successfully")
         Cred.saveCredential()
 
 class Cred():
@@ -35,38 +37,46 @@ class Cred():
         self.password = password
 
     def saveCredential():
-        print ("To proceed choose the following. Choose the shortcodes: \n sc- Save Credential\n fc - View Credentials\n dc- Display credential dl- delete credential ex- exit\n") 
+        print ("To proceed choose the following. Choose the shortcodes: \n sc- Save Credential\n fc - Find Credentials\n dc- Display credential dl- delete credential ex- exit\n") 
         option = input().lower()
 
         if option == 'sc':
-            Print("Enter your Accounts credentials:\n")
-            print("Account name:")
-            accountname = input()
-            print("Username:")
-            username = input()
+            print("Enter your Accounts credentials:\n")
+            # print("Account name:")
+            # accountname = input()
+            # print("Username:")
+            # username = input()
             print("Will you like to en - enter your password or sg - system generated?")
-            passwordChoice = input.lower()
+            passwordChoice = input()
+            cred1 = Cred(input("Accountname: "), input("Username: "), input("Password: "))
             if passwordChoice == 'en':
-                password = input()
-            if passwordChoice == 'sg':
-                pass
-                
-            cred_list.append(accountname,username,password)     
-     
-            
+                print("please input your password")
+                # password = input()
+                cred_list.append(cred1)
+                print(cred1.accountname, cred1.username, cred1.password)
+                # cred_list.append(accountname, username, password)
+                Cred.saveCredential()
+            elif passwordChoice == 'sg':
+                print("mayoo")
+                       
         elif option == 'fc':
             print("Account name you will like to find?")
             accountname = input()
             for credential in cred_list:
-                if credential.accountname = accountname:
-                    print(credential)
+                if credential.accountname == accountname:
+                    print(f"Account name: {credential.accountname} Username : {credential.username} Password : {credential.password}")
+                    Cred.saveCredential()
+                else:
+                    print("Account name does not exist")    
+
+                
         
         elif option == 'dc':
             print("display credentials")
             if (len(cred_list)>0):
                 for credential in cred_list:
                     accountname = credential.accountname
-                    username = credential.password
+                    username = credential.username
                     password = credential.password
                     print(f"Account name : {accountname}\n Password: {password}\n Username : {username}")
 
@@ -74,7 +84,7 @@ class Cred():
             print("Enter account name you will like to delete")
             accountname = input()
             for credential in cred_list:
-                if credential.accountname = accountname:
+                if credential.accountname == accountname:
                     cred_list.remove(credential)
             print("account deleted successfully")        
 
@@ -85,22 +95,22 @@ class Cred():
             print("Invalid option")    
 
     def generate_random_password():
+        pass
 
-              
+if __name__ == '__main__':
 
+    print("Welcome to password locker")
+    print("From the options below, choose lg - login or cr - create a new account and ex for exit")
+    choice = input()
 
-print("Welcome to password locker")
-print("From the options below, choose lg for login, cr to create a new account and ex for exit")
-choice = input()
-
-if choice == "lg":
-    print("login")
-elif choice == "cr":
-    User.register()
-elif choice == "ex":
-    exit()
-else: 
-    print("Invalid. Please try again")
+    if choice == "lg":
+        print("login")
+    elif choice == "cr":
+        User.register()
+    elif choice == "ex":
+        exit()
+    else: 
+        print("Invalid. Please try again")
 
 
 
