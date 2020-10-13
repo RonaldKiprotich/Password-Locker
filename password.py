@@ -1,5 +1,6 @@
 
 import random
+import string
 
 persons = list()
 cred_list = []
@@ -30,7 +31,7 @@ class User:
         print("Logged in successfully")
         Cred.saveCredential()
 
-class Cred():
+class Cred:
     def __init__ (self,accountname,username,password):
         self.accountname = accountname
         self.username = username
@@ -49,26 +50,35 @@ class Cred():
 
         if option == 'sc':
             print("Enter your Accounts credentials:\n")
-            # print("Account name:")
-            # accountname = input()
-            # print("Username:")
-            # username = input()
+            print("Account name:")
+            account_name = input()
+            print("Username:")
+            user_name = input()
             print("Will you like to en - enter your password or sg - system generated?")
             passwordChoice = input()
-            cred1 = Cred(input("Accountname: "), input("Username: "), input("Password: "))
             if passwordChoice == 'en':
                 print("please input your password")
-                # password = input()
+                pass_word = input()
+                # new_cred = Credential()
+                # Cred.saveCredential()
+                cred1 = Cred(account_name, user_name, pass_word)
                 cred_list.append(cred1)
-                print(cred1.accountname, cred1.username, cred1.password)
-                # cred_list.append(accountname, username, password)
+                print("Your account has been created Successfully")
                 Cred.saveCredential()
             elif passwordChoice == 'sg':
-                password = Cred.passwordGenerate()
-                # print(f"Your password is: {password}")
+                pass_word = Cred.passwordGenerate(8)
+                print(f"Your password is: {pass_word}")
                 # cred1 = Cred(input("Accountname: "), input("Username: "))
                 # cred_list.append(cred1)
                 # print(cred1.accountname, cred1.username, cred1.password)
+                cred1 = Cred(account_name, user_name, pass_word)
+                cred_list.append(cred1)
+                print("Your account has been created successfully")
+                Cred.saveCredential()
+            else:
+                print("invalid choice")
+            
+            
                  
         elif option == 'fc':
             print("Account name you will like to find?")
