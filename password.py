@@ -64,7 +64,7 @@ class Cred:
                 cred1 = Cred(account_name, user_name, pass_word)
                 cred_list.append(cred1)
                 print("Your account has been created Successfully")
-                Cred.saveCredential()
+                # Cred.saveCredential()
             elif passwordChoice == 'sg':
                 pass_word = Cred.passwordGenerate(8)
                 print(f"Your password is: {pass_word}")
@@ -74,24 +74,27 @@ class Cred:
                 cred1 = Cred(account_name, user_name, pass_word)
                 cred_list.append(cred1)
                 print("Your account has been created successfully")
-                Cred.saveCredential()
+                # Cred.saveCredential()
             else:
                 print("invalid choice")
+            Cred.saveCredential()
             
             
                  
         elif option == 'fc':
             print("Account name you will like to find?")
             accountname = input()
-            for credential in cred_list:
-                if credential.accountname == accountname:
-                    print(f"Account name: {credential.accountname} Username : {credential.username} Password : {credential.password}")
-                    Cred.saveCredential()
-                else:
-                    print("Account name does not exist")    
+            if (len(cred_list)>0):
+                for credential in cred_list:
+                    if credential.accountname == accountname:
+                        print(f"Account name: {credential.accountname} Username : {credential.username} Password : {credential.password}")
+                    else:
+                        print("Account name does not exist") 
+            else:
+                print("Account name does not exist") 
 
-                
-        
+                Cred.saveCredential()
+
         elif option == 'dc':
             print("display credentials")
             if (len(cred_list)>0):
@@ -100,7 +103,9 @@ class Cred:
                     username = credential.username
                     password = credential.password
                     print(f"Account name : {accountname}\n Password: {password}\n Username : {username}")
-                    Cred.saveCredential()
+            else:
+                print("you have no credentials saved.")
+            Cred.saveCredential()
 
         elif option == 'dl':
             print("Enter account name you will like to delete")
