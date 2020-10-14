@@ -65,7 +65,7 @@ The app will open on terminal
 ## Behaviour Driven Development
 | Behaviour | Input | Output |
 | :---------------- | :---------------: | ------------------: |
-|Open the application on the terminal | Run the command ```$ password.py```|Hello Welcome to your Password Locker... <br>* cr ---  Create New Account * lg ---  Login |
+|Open the application on the terminal | Run the command ```$ password.py```|Hello Welcome to your Password Locker... <br>* cr ---  Create New Account *  |
 |Select  cr| input username and password.cr----to type your own password,sg----system generated password| Hello ```username```, Your account has been created succesfully! Your password is: ```password```|
 |Select lg  | Enter your password and username you signed up with|  menu to help you navigate through the application|
 |Store a new credential in the application| Enter ```nc```|Enter Account's name, Accounts' username, Account's password<br>choose ```en``` to enter your password or ```sg``` for the application to generate a password for you |

@@ -21,13 +21,6 @@ class User:
         print("Put in your details to login")
         username1 = input("Username: ")
         password1 = input("Password: ")
-        #person_combined = username + password
-        # for obj in persons:
-        #     print()
-        # if username1 == person1.username and password1 == person1.password:
-        #     print("almost there")
-        # else:
-        #     print("matata")
         print("Logged in successfully")
         Cred.saveCredential()
 
